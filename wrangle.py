@@ -92,12 +92,12 @@ def wrangle_zillow():
     zillow['area (sq-ft)'] = zillow['area (sq-ft)'].astype(int)
     zillow.tax_value = zillow.tax_value.astype(int)
 
-    #fips and yearbuilt seem to be categorical, so I'm going to change those to object types
-    #That should be helpful when exploring the data
-    zillow.fips = zillow.fips.astype(object)
-    zillow.year_built = zillow.year_built.astype(object)
-
     #Now remove any outliers and return the prepared dataframe
     zillow = remove_outliers(zillow, 2.5, zillow.columns)
+
+    #fips and yearbuilt seem to be categorical, so I'm going to change those to object types
+    #That should be helpful when exploring the data
+    zillow.fips = zillow.fips.astype(str)
+    zillow.year_built = zillow.year_built.astype(int)
 
     return zillow
