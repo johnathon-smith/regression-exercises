@@ -1,3 +1,3 @@
-telco.csv
+*.csv
 env.py
 __pycache__
